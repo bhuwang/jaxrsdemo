@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.bhuwan.jaxrsdemo.exception;
+package com.bhuwan.jaxrsdemo.messanger.exception;
 
 /**
  * @author bhuwan

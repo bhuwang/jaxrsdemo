@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.bhuwan.jaxrsdemo.resources;
+package com.bhuwan.jaxrsdemo.messanger.resources;
 
 import java.util.List;
 
@@ -15,8 +15,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.bhuwan.jaxrsdemo.model.Profile;
-import com.bhuwan.jaxrsdemo.service.ProfileService;
+import com.bhuwan.jaxrsdemo.messanger.model.Profile;
+import com.bhuwan.jaxrsdemo.messanger.service.ProfileService;
 
 /**
  * @author bhuwan

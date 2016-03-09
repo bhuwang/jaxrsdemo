@@ -1,48 +1,32 @@
 /**
  * 
  */
-package com.bhuwan.jaxrsdemo.model;
+package com.bhuwan.jaxrsdemo.messanger.model;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * @author bhuwan
  *
  */
 @XmlRootElement
-public class Message {
+public class Comment {
 
     private long id;
     private String message;
     private Date created;
     private String author;
-    private Map<Long, Comment> comments = new HashMap<>();
-    private List<Link> links = new ArrayList<>();
 
-    public Message() {
+    public Comment() {
     }
 
-    public Message(long id, String message, String author) {
+    public Comment(long id, String message, String author) {
         this.id = id;
         this.message = message;
         this.author = author;
         this.created = new Date();
-    }
-
-    public void addLink(String url, String rel) {
-        Link link = new Link(url, rel);
-        links.add(link);
-    }
-
-    public void addComment(Comment comment) {
-        comments.put(comment.getId(), comment);
     }
 
     /**
@@ -104,36 +88,4 @@ public class Message {
     public void setAuthor(String author) {
         this.author = author;
     }
-
-    /**
-     * @return the comments
-     */
-    @XmlTransient
-    public Map<Long, Comment> getComments() {
-        return comments;
-    }
-
-    /**
-     * @param comments
-     *            the comments to set
-     */
-    public void setComments(Map<Long, Comment> comments) {
-        this.comments = comments;
-    }
-
-    /**
-     * @return the links
-     */
-    public List<Link> getLinks() {
-        return links;
-    }
-
-    /**
-     * @param links
-     *            the links to set
-     */
-    public void setLinks(List<Link> links) {
-        this.links = links;
-    }
-
 }

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.bhuwan.jaxrsdemo.resources.custombeans;
+package com.bhuwan.jaxrsdemo.messanger.resources.custombeans;
 
 import javax.ws.rs.QueryParam;
 

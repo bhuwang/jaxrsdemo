@@ -1,13 +1,13 @@
 /**
  * 
  */
-package com.bhuwan.jaxrsdemo;
+package com.bhuwan.jaxrsdemo.messanger;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import com.bhuwan.jaxrsdemo.model.Message;
-import com.bhuwan.jaxrsdemo.model.Profile;
+import com.bhuwan.jaxrsdemo.messanger.model.Message;
+import com.bhuwan.jaxrsdemo.messanger.model.Profile;
 
 /**
  * @author bhuwan

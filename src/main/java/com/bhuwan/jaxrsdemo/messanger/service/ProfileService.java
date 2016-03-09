@@ -1,14 +1,14 @@
 /**
  * 
  */
-package com.bhuwan.jaxrsdemo.service;
+package com.bhuwan.jaxrsdemo.messanger.service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.bhuwan.jaxrsdemo.DatabaseClass;
-import com.bhuwan.jaxrsdemo.model.Profile;
+import com.bhuwan.jaxrsdemo.messanger.DatabaseClass;
+import com.bhuwan.jaxrsdemo.messanger.model.Profile;
 
 /**
  * @author bhuwan

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.bhuwan.jaxrsdemo.resources;
+package com.bhuwan.jaxrsdemo.messanger.resources;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,9 +21,9 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriInfo;
 
-import com.bhuwan.jaxrsdemo.model.Message;
-import com.bhuwan.jaxrsdemo.resources.custombeans.MessageFilterBean;
-import com.bhuwan.jaxrsdemo.service.MessageService;
+import com.bhuwan.jaxrsdemo.messanger.model.Message;
+import com.bhuwan.jaxrsdemo.messanger.resources.custombeans.MessageFilterBean;
+import com.bhuwan.jaxrsdemo.messanger.service.MessageService;
 
 /**
  * @author bhuwan

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.bhuwan.jaxrsdemo.model;
+package com.bhuwan.jaxrsdemo.messanger.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

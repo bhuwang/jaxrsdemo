@@ -1,4 +1,4 @@
-package com.bhuwan.jaxrsdemo.resources;
+package com.bhuwan.jaxrsdemo.messanger.resources;
 
 import javax.ws.rs.CookieParam;
 import javax.ws.rs.GET;
