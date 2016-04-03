@@ -1,0 +1,217 @@
+1. Introduction
+
+WebService: Talk about how jar and api works
+WebService Type: REST uses mostly http standards, SOAP[Simple object access protocol]
+WebService Charateristics: 
+	Client [Data with html and css], Server[only data]
+	Protocol [SOAP] or message formats
+	For REST there is no protocol used.
+	HTTP Exchange [which method?] : There are some guidelines but there is not rules
+	Service Definition: you need to understand the method you are calling like what it accepts? what is the response format? how to call?
+		SOA: WSDL (web service definition language)
+		REST: none [WADL (web application definition language)]
+There are no rules for REST
+
+SOAP Web Service Specification: Bunch of rules which dectate what every SOAP service should be
+
+REST: Roy Fielding [Thesis 2002]
+	Representational State Transfer
+	It is an architectural style
+	No strict rules only a list of guidelines
+REST + WebService = RESTFUL Web Services
+
+What do you mean by: 
+	Not Restful
+	Not fully restful
+	completely restful
+
+2. REST And HTTP
+	Rest inspired by the lot of concepts used by HTTP
+	Roy Fielding: One of the authors of the HTTP specification
+	
+	HTTP: you have to understand the http specification to understand rest
+		Hyper Text and Hyper Text Transfer Protocol [http]
+		Hypertext : exchange between client and server.
+			Logical text which contains hyperlinks: helps to switch from one page to another page
+			Written in HTML
+REST Concepts:
+	1. Resource Locations
+	2. Address: Resource based addresses	
+		Weather Web Service
+		Address
+		Weather Website: weartherapp.com/weatherInfo?zipcode=1234
+		The above url is not resource bases instead it is more action based
+	Resource Based URIs:
+		weatherapp.com/zipcode/1234
+		weatherapp.com/countries/np
+	3. Mthods:
+		GET, POST, PUT, DELETE
+		GET : weatherapp.com/zipcode/1234
+		Good restful webservice api makes good use of http methods
+		Right method for right service
+	4. Metadata:
+		Response
+		Http status Codes: gives some information on what actually happening
+		Header value contains metadata: contentType [text/xml, application/json]
+		Content Negotiation: xml or json or text
+			
+Summary on implementation of Restful Services:
+	1. Resource bases URIs
+	2. HTTP Methods
+	3. HTTP status codes
+	4. Message Headers
+	
+
+2. Designing Restful URIs
+	Messanger API Diagram
+	Web application uris: user just need to remember the home page uri and thru that page they could navigate all the application.
+	REST API uris: Consumers must have to aware of URIs. So here need common convention while writing these uris.
+	Talk about the old 90s example of static we page urls. Suppose you have to create 4 static profile pages, what would be the uris.
+	URI contains nouns/entities not verbs
+	
+	Resource Relations:
+		Relation between messages and comments
+		/messages/{messageId}/comments/{commentId}
+		/messages/{messageId}/likes/{likeId}
+	
+	Restful URI types:
+		A. Resource URIs or Instant URIs : /messages/{messageId}
+		B. Collection Resource URIs: /messages/{messageId}/comments
+	Q. How about accessing all the comments regardless of the message id ?
+		Ans: /comments
+	
+	Filtering Results:
+		Query Parameter: /messages?offset=30&limit=10, /messages?year=2014
+
+3. HTTP Methods
+	compare getMessage?id=10 and /messages/10
+	updateMessage?id=10 and /messages/10
+	deleteMessage?id=10 and /messages/10
+	GET/POST/PUT/DELETE = These all are already there in http and we just need to use the right method at right time.
+	
+4. Idempotence In HTTP Methods
+	Difference between PUT and POST
+	Read only: Get -> Safe to make duplicate requests
+	Write Methods: POST, PUT, DELETE ->
+	Safe Repeatable (Get, put, del) and Non-repeatable (post) operations
+	POST is not a safe method to make multiple calls -> create new resource everytime.
+	Idempotent vs non-idempotent[Post]
+	That is why resource creation request should always be done thru POST.
+
+5. REST Response
+	webapplication : response is an html page.
+	RESTful : xml/json
+	
+	Message Entity:
+	public class MessageEntity {
+	    private long id;
+	    private String message;
+	    private Date created;
+	    private String author;
+	...
+	}	
+
+	JSON:
+	{
+	    "id":"10",
+	    "message":"Hello world",
+	    "created":"2014-06-01T18:06:36.902",
+	    "author":"Bhuwan"
+	}
+
+	XML:
+	<messageEntity>
+	    <id>10</id>
+	    <message>Hello world</message>
+	    <created>2014-06-01T18:06:36.902</created>
+	    <author>Bhuwan</author>
+	</messageEntity>
+
+	How client know how to format the resposen? -> Using Response Headers
+	Response: combination of Headers and Message Body
+	
+	Status Codes:
+	http://google.com/abc
+	https://www.facebook.com/abcdd
+	https://www.facebook.com/abcdd/a/a
+	https://github.com/axy/abc/
+
+	1xx to 5xx -> 100 to 599
+	100: Informational
+	200: Success
+	300: Redirect
+	400: Client Error
+	500: Server Error
+	
+	Get message	/messages/{messageId}	GET	
+	Success			200
+	Not found		404
+	Failure			500
+	Delete message	/messages/{messageId}	DELETE	
+	Success			200 or 204
+	Not found		404
+	Failure			500
+	Edit message	/messages/{messageId}	PUT	
+	Success			200
+	Wrong format / data	400 or 415
+	Not found		404
+	Failure			500
+	Create message	/messages	POST	
+	Success			201
+	Wrong format / data	400 or 415
+	Failure			500
+	
+6. HATEOAS : Hypermedia as the engine of application state
+	No service definition for REST
+	No doc needed for to use a website. You just go to the home page and you will be guided through that home page.
+	In case of we application we have hyper links to back and forth to pages.
+	
+	For REST:
+	{
+	  "id": "1",
+	  "content": "Hello World!",
+	  "author": "Bhuwan",
+	  "postedDate": "03-01-2016",
+	  "href": "/messages/1"
+	}
+
+	{
+	  "id": "1",
+	  "content": "Hello World!",
+	  "author": "Bhuwan",
+	  "postedDate": "03-01-2016",
+	   "links" : [
+		        {  
+		            "href": "/messages/1",
+		            "rel": "self"
+		        },
+		        {  
+		            "href": "/messages/1/comments",
+		            "rel": "comments"
+		        },
+		        {  
+		            "href": "/messages/1/likes",
+		            "rel": "likes"
+		        },
+		        {  
+		            "href": "/messages/1/shares",
+		            "rel": "shares"
+		        },
+		        {  
+		            "href": "/profiles/bhuwan",
+		            "rel": "author"
+		        }
+		    ]
+	}
+	
+7. The Richardson Maturity Model : Leonard Richardson
+	Defines whether the api is restful, semi restful, not restufl, fully restful etc.
+	It mentions 3 levels:
+	1. Level 0: SOAP services - Swamp of POX(plain old xml) - uses only one uri and only one http method usually POST.
+	2. Level 1: Resources
+	3. Level 2: Http verbs
+	4. Level 3: Hypermedia controls
+	
+		
+	
+	

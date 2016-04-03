@@ -1,0 +1,52 @@
+1. About JAX-RS:
+	- Jersey, RestEasy, and Restlet libraries available.
+	- All these libraries implement a common interface/api
+	- If you implement in Jersey and later take jersey out and put RestEasy in and it will seamlessly work fine.
+	- This common API is called JAX-RS.
+	- JAX-RS is a bunch of interfaces and annotations only. That is it does not have any functionality.
+	- Libraries fit in here and implement the interfaces from JAX-RS. These library adds all the functionality.
+	- Which to learn? Pick one and learn and and you can easily switch to others. All libraries are interchangable.
+	- We will be learning JAX-RS not Jersey/RestEasy/Restlet
+	- Jersery - Reference Implementation for the JAX-RS specification
+
+2. Setting Up:
+	- jersey.java.net - use maven to install
+	- maven and tomcat installation
+	- Describe how servlet mapping is being done
+
+3. Creating a Resource:
+	- @Path
+	- @Get
+	- @Produces
+	- @Consumes
+	- MediaTypes.Text_Plain
+
+4. Returning XML Response:
+	- @XmlRootElement by JAXB
+
+5. Installing REST Client Postman - Chrome
+
+6. Building Service Stubs
+
+7. Accessing Path Params
+
+8. Returning JSON Response
+
+9. Implementing Profile Resource
+
+10. Pagination and Filtering
+
+11. Matrix, Header, Cookie Param, Form Param, Path Param, Query Param
+
+12. @Context [UriInfo, HttpHeaders]
+
+13. Bean Param
+
+14. SubResource 
+
+15. Building Response Object and Location Headers - Using Response Builder 
+
+16. Exception Handling - Using ExceptionMapper
+
+17. HATEOAS
+	
