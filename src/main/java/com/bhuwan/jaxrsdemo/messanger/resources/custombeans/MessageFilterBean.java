@@ -3,6 +3,7 @@
  */
 package com.bhuwan.jaxrsdemo.messanger.resources.custombeans;
 
+import javax.ws.rs.MatrixParam;
 import javax.ws.rs.QueryParam;
 
 /**
@@ -11,7 +12,7 @@ import javax.ws.rs.QueryParam;
  */
 public class MessageFilterBean {
 
-    private @QueryParam("year") int year;
+    private @MatrixParam("year") int year;
     private @QueryParam("start") int start;
     private @QueryParam("size") int size;
 

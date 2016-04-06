@@ -49,4 +49,6 @@
 16. Exception Handling - Using ExceptionMapper
 
 17. HATEOAS
+
+18. Content Negotiation - Client Side [Accepts/Content-type], Server Side [@Produces/@Consumes]
 	
